@@ -6,6 +6,8 @@ import com.packt.webstore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -25,5 +27,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getProductsByCategory(String category) {
         return productRepository.getProductsByCategory(category);
+    }
+
+    @Override
+    public Set<Product> getProductsByFilter(Map<String, List<String>> filterParams) {
+        return productRepository.getProductByFilter(filterParams);
     }
 }
