@@ -70,7 +70,7 @@ public class InMemoryProductRepository implements ProductRepository {
     }
 
     @Override
-    public Set<Product> getProductByFilter(Map<String, List<String>> filterParams) {
+    public Set<Product> getProductsByFilter(Map<String, List<String>> filterParams) {
         Set<Product> productsByBrand = new HashSet<Product>();
         Set<Product> productsByCategory = new HashSet<Product>();
         Set<String> criterias = filterParams.keySet();
