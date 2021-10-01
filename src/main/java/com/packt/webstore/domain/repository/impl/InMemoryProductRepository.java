@@ -38,8 +38,9 @@ public class InMemoryProductRepository implements ProductRepository {
         listOfProducts.add(laptop_dell);
         listOfProducts.add(tablet_Nexus);
     }
+
     @Override
-    public List<Product> getAllProducts () {
+    public List<Product> getAllProducts() {
         return listOfProducts;
     }
 
@@ -61,7 +62,7 @@ public class InMemoryProductRepository implements ProductRepository {
     @Override
     public List<Product> getProductsByCategory(String category) {
         List<Product> productsByCategory = new ArrayList<Product>();
-        for (Product product:listOfProducts) {
+        for (Product product : listOfProducts) {
             if (category.equalsIgnoreCase(product.getCategory())) {
                 productsByCategory.add(product);
             }
@@ -84,11 +85,25 @@ public class InMemoryProductRepository implements ProductRepository {
             }
         }
         if (criterias.contains("category")) {
-            for (String category:filterParams.get("category")) {
+            for (String category : filterParams.get("category")) {
                 productsByCategory.addAll(this.getProductsByCategory(category));
             }
         }
         productsByCategory.retainAll(productsByBrand);
         return productsByCategory;
+    }
+
+    @Override
+    public List<Product> filterProducts(String category, Map<String, List<String>> priceParams, String manufacturer) {
+        List <Product> filteredProducts = new ArrayList<>();
+        for (Product product : listOfProducts) {
+            if (category.equalsIgnoreCase(product.getCategory())
+                    && (product.getUnitPrice().intValue() > Integer.parseInt(priceParams.get("low").get(0)))
+                    && (product.getUnitPrice().intValue() < Integer.parseInt(priceParams.get("high").get(0)))
+                    && manufacturer.equalsIgnoreCase(product.getManufacturer())) {
+                filteredProducts.add(product);
+            }
+        }
+        return filteredProducts;
     }
 }

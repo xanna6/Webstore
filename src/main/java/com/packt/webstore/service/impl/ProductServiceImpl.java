@@ -5,6 +5,8 @@ import com.packt.webstore.domain.repository.ProductRepository;
 import com.packt.webstore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -33,4 +35,10 @@ public class ProductServiceImpl implements ProductService {
     public Set<Product> getProductsByFilter(Map<String, List<String>> filterParams) {
         return productRepository.getProductsByFilter(filterParams);
     }
+
+    @Override
+    public List<Product> filterProducts(String category, Map<String, List<String>> priceParams, String manufacturer) {
+        return productRepository.filterProducts(category, priceParams, manufacturer);
+    }
+
 }
