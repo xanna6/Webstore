@@ -77,9 +77,9 @@
                 <div class="form-group">
                     <label class="control-label col-lg-2" for="condition">Stan</label>
                     <div class="col-lg-10">
-                        <form:radiobutton path="condition" value="New" />Nowy
-                        <form:radiobutton path="condition" value="Old" />Używany
-                        <form:radiobutton path="condition" value="Refurbished" />Odnowiony
+                        <form:radiobutton id="condition" path="condition" value="New" />Nowy
+                        <form:radiobutton id="condition" path="condition" value="Old" />Używany
+                        <form:radiobutton id="condition" path="condition" value="Refurbished" />Odnowiony
                     </div>
                 </div>
                 <div class="form-group">
