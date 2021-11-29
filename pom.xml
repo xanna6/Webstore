@@ -87,6 +87,11 @@
             <version>1.2.12</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>commons-configuration</groupId>
+            <artifactId>commons-configuration</artifactId>
+            <version>1.6</version>
+        </dependency>
     </dependencies>
 
 </project>
